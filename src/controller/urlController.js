@@ -54,11 +54,11 @@ const urlShorten = async function (req, res) {
     if (longurl.match(regex)){
 
       let cahcedUrlData = await GET_ASYNC(`${req.body.longUrl}`)
-      let x = JSON.parse(cahcedUrlData)
+      let urlInfo = JSON.parse(cahcedUrlData)
 
-  if (x) {
+  if (urlInfo) {
 
-    return res.status(200).send({ status: true,message:"This Url is coming from cashes", data: x })}
+    return res.status(200).send({ status: true,message:"This Url is coming from cache", data: urlInfo })}
 
     else{let urlValue = await urlModel.findOne({ longUrl: req.body.longUrl }).select({ urlCode: 1, longUrl: 1, shortUrl: 1, _id: 0 })
 
